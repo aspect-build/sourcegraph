@@ -259,7 +259,7 @@
     }
   },
   "scripts": {
-    "lint:js": "yarn run -T eslint --cache '**/*.[jt]s?(x)'",
+    "lint:js": "pnpm eslint --cache '**/*.[jt]s?(x)'",
     "test": "yarn run -T ts-node ./tests/runTests.ts",
     "package": "yarn run -T ts-node ./scripts/package.ts",
     "prebuild": "yarn build-inline-extensions",

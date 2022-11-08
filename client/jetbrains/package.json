@@ -14,9 +14,9 @@
   },
   "scripts": {
     "build": "yarn task:gulp esbuild",
-    "lint": "yarn run lint:js && yarn run lint:css",
-    "lint:js": "yarn run -T eslint --cache 'webview/**/*.[jt]s?(x)'",
-    "lint:css": "yarn run -T stylelint 'webview/**/*.scss'",
+    "lint": "pnpm lint:js && pnpm lint:css",
+    "lint:js": "eslint --cache 'webview/**/*.[jt]s?(x)'",
+    "lint:css": "stylelint 'webview/**/*.scss'",
     "standalone": "yarn run -T ts-node standalone/src/server.ts",
     "storybook": "STORIES_GLOB='client/jetbrains/webview/src/**/*.story.tsx' yarn workspace @sourcegraph/storybook run start",
     "task:gulp": "yarn run -T cross-env NODE_OPTIONS=\"--max_old_space_size=8192\" gulp",
