@@ -12,9 +12,9 @@
     "start:chromatic": "CHROMATIC=true TS_NODE_TRANSPILE_ONLY=true pnpm start-storybook -p 9001 -c ./src",
     "build": "TS_NODE_TRANSPILE_ONLY=true pnpm build-storybook -c ./src",
     "build:webpack-stats": "TS_NODE_TRANSPILE_ONLY=true WEBPACK_DLL_PLUGIN=false pnpm start-storybook -c ./src --smoke-test --webpack-stats-json ./storybook-static --loglevel warn",
-    "build:dll-bundle": "TS_NODE_TRANSPILE_ONLY=true yarn run -T webpack --config ./src/webpack.config.dll.ts --no-stats",
+    "build:dll-bundle": "TS_NODE_TRANSPILE_ONLY=true webpack --config ./src/webpack.config.dll.ts --no-stats",
     "start:dll": "TS_NODE_TRANSPILE_ONLY=true WEBPACK_DLL_PLUGIN=true pnpm start-storybook -p 9001 -c ./src",
     "clean:dll": "rm -rf assets/dll-bundle storybook-static/*-stats.json",
-    "test": "yarn run -T jest"
+    "test": "jest"
   }
 }

@@ -22,7 +22,7 @@
   "sideEffects": false,
   "scripts": {
     "lint:js": "eslint 'src/*.[jt]s?(x)'",
-    "docs": "yarn run -T typedoc",
+    "docs": "typedoc",
     "prepublish": "eslint && yarn run docs"
   },
   "devDependencies": {

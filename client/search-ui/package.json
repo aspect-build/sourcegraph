@@ -9,6 +9,6 @@
   "scripts": {
     "storybook": "STORIES_GLOB='client/search-ui/src/**/*.story.tsx' pnpm -F @sourcegraph/storybook start",
     "lint:js": "eslint --cache 'src/**/*.[jt]s?(x)'",
-    "test": "yarn run -T jest"
+    "test": "jest"
   }
 }

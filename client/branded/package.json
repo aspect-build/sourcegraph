@@ -7,6 +7,6 @@
     "storybook": "STORIES_GLOB='client/branded/src/**/*.story.tsx' pnpm -F @sourcegraph/storybook start",
     "lint:js": "eslint --cache '**/*.[jt]s?(x)'",
     "lint:css": "stylelint 'src/**/*.scss' --quiet",
-    "test": "yarn run -T jest"
+    "test": "jest"
   }
 }
