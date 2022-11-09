@@ -22,10 +22,10 @@ Prerequisites:
 
 Run the tests:
 
-1. From the repository root directory, `cd web` and then `yarn` and `yarn generate`.
+1. From the repository root directory, `cd web` and then `pnpm` and `pnpm generate`.
 1. From the repository root directory, `cd client/web`.
 1. Create a `.envrc` file using the information in the 1Password Shared vault (look for `test:regression envrc` note.), and run `direnv allow` after.
-1. Run `yarn run test:regression`.
+1. Run `pnpm test:regression`.
 1. You should see a Chrome window pop up and the tests will play in that window. The initial run may
    take awhile, because test repositories need to be cloned.
 1. some tests require additional manual verification of screenshots after the test completes.
@@ -52,7 +52,7 @@ export NO_CLEANUP=true
 
 - Start the Docker image `IMAGE=sourcegraph/server:VERSION ./dev/run-server-image.sh`
 
-- Then run `yarn mocha src/regression/search.test.ts`
+- Then run `pnpm mocha src/regression/search.test.ts`
 
 Tips:
 

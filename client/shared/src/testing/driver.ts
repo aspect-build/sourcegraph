@@ -805,7 +805,7 @@ export async function createDriverForTest(options?: Partial<DriverOptions>): Pro
         }
         if (!manifest.permissions.includes('<all_urls>')) {
             throw new Error(
-                'Browser extension was not built with permissions for all URLs.\nThis is necessary because permissions cannot be granted by e2e tests.\nTo fix, run `EXTENSION_PERMISSIONS_ALL_URLS=true yarn run dev` inside the browser/ directory.'
+                'Browser extension was not built with permissions for all URLs.\nThis is necessary because permissions cannot be granted by e2e tests.\nTo fix, run `EXTENSION_PERMISSIONS_ALL_URLS=true pnpm dev` inside the browser/ directory.'
             )
         }
         args.push(`--disable-extensions-except=${chromeExtensionPath}`, `--load-extension=${chromeExtensionPath}`)

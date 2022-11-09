@@ -64,7 +64,7 @@ It works as follows:
 ## Requirements
 
 - `node`
-- `yarn`
+- `pnpm`
 - `make`
 
 ## Development
@@ -72,7 +72,7 @@ It works as follows:
 To build all the browser extensions for all browsers at once:
 
 ```bash
-yarn run dev
+pnpm dev
 ```
 
 To only build for a single browser (which makes builds faster in local development), set the env var `TARGETS=chrome` or `TARGETS=firefox`.
@@ -98,8 +98,8 @@ Click reload for Sourcegraph at `chrome://extensions`
 In a separate terminal session run:
 
 ```bash
-yarn global add web-ext
-yarn run dev:firefox
+pnpm install -g web-ext
+pnpm dev:firefox
 ```
 
 A Firefox window will be spun up with the extension already installed.
@@ -111,7 +111,7 @@ Save a file and wait for webpack to finish rebuilding.
 #### Caveats
 
 The window that is spun up is completely separate from any existing sessions you have on Firefox.
-You'll have to sign into everything at the beginning of each development session(each time you run `yarn run dev:firefox`).
+You'll have to sign into everything at the beginning of each development session(each time you run `pnpm dev:firefox`).
 You should ensure you're signed into any Sourcegraph instance you point the extension at as well as GitHub.
 
 ### Firefox (manual)
@@ -147,7 +147,7 @@ Click reload for Sourcegraph at `about:debugging`
   - develop
     - add/edit test case or at least its part with navigation to a certain page
     - if there's no page snapshot for created test or page URL referenced in the existing test has been changed, test will fail with 'Page not found' error
-    - to generate or update page snapshots for tests run `yarn record-integration`
+    - to generate or update page snapshots for tests run `pnpm record-integration`
 - E2E tests: `sg test bext-build` & `sg test bext-e2e`
 
 ### E2E tests
@@ -167,7 +167,7 @@ It currently does not run in CI and is intended to be run manually for release t
 
 All test suites in `integration` run in CI. These tests run the browser extension against recordings of code hosts (using [Polly.JS](https://netflix.github.io/pollyjs/#/)) and mock data for our GraphQL API.
 
-To update all recordings, run `yarn record-integration`. To update a subset of recordings, run `POLLYJS_MODE=record SOURCEGRAPH_BASE_URL=https://sourcegraph.com yarn test-integration --grep=YOUR_PATTERN`, where `YOUR_PATTERN` is typically a test name.
+To update all recordings, run `pnpm record-integration`. To update a subset of recordings, run `POLLYJS_MODE=record SOURCEGRAPH_BASE_URL=https://sourcegraph.com pnpm test-integration --grep=YOUR_PATTERN`, where `YOUR_PATTERN` is typically a test name.
 
 ## Deploy
 
@@ -221,11 +221,11 @@ Use `nvm` to select the Node.js version specified in `.nvmrc`.
 nvm install
 ```
 
-Install dependencies with `yarn` (install it globally with `npm i -g yarn` if needed) and build.
+Install dependencies with `pnpm` (install it globally with `npm i -g pnpm` if needed) and build.
 
 ```sh
-yarn
-yarn run build-browser-extension
+pnpm install
+pnpm build-browser-extension
 ```
 
 The build step automatically pulls in [sourcegraph/code-intel-extensions](https://github.com/sourcegraph/code-intel-extensions) as a dependency.
@@ -241,7 +241,7 @@ The output will be in `browser/build`:
 
 ## Create a zip of the browser extension source code
 
-The `yarn run create-source-zip` command will create `sourcegraph.zip`, an archive of the source that can be used to do a build of the browser extension.
+The `pnpm create-source-zip` command will create `sourcegraph.zip`, an archive of the source that can be used to do a build of the browser extension.
 
 This will pull the source code at a given revision (by default, the `bext/release` branch on GitHub) and create a zip of the source code, which can then be used to reproduce the exact build. Some directories of the repo, which are not relevant to the browser extension, are excluded from the archive.
 
@@ -251,5 +251,5 @@ Use this process to create a source code zip to attach to a Firefox add-on submi
 
 ```
 cd client/browser
-yarn run create-source-zip
+pnpm create-source-zip
 ```

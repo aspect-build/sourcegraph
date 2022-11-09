@@ -13,7 +13,7 @@
     "directory": "client/jetbrains"
   },
   "scripts": {
-    "build": "yarn task:gulp esbuild",
+    "build": "pnpm task:gulp esbuild",
     "lint": "pnpm lint:js && pnpm lint:css",
     "lint:js": "eslint --cache 'webview/**/*.[jt]s?(x)'",
     "lint:css": "stylelint 'webview/**/*.scss'",
@@ -21,6 +21,6 @@
     "storybook": "STORIES_GLOB='client/jetbrains/webview/src/**/*.story.tsx' pnpm -F @sourcegraph/storybook start",
     "task:gulp": "cross-env NODE_OPTIONS=\"--max_old_space_size=8192\" gulp",
     "typecheck": "tsc -b",
-    "watch": "WATCH=true yarn task:gulp esbuild"
+    "watch": "WATCH=true pnpm task:gulp esbuild"
   }
 }

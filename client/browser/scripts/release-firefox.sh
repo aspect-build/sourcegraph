@@ -3,13 +3,13 @@
 set -ex
 
 # Setup
-yarn build
+pnpm build
 rm -rf build/web-ext
 mkdir -p build/web-ext
 
 # Sign the bundle
-yarn add web-ext
-yarn web-ext sign --source-dir ./build/firefox --artifacts-dir ./build/web-ext --api-key "$FIREFOX_AMO_ISSUER" --api-secret "$FIREFOX_AMO_SECRET"
+pnpm install web-ext
+pnpm web-ext sign --source-dir ./build/firefox --artifacts-dir ./build/web-ext --api-key "$FIREFOX_AMO_ISSUER" --api-secret "$FIREFOX_AMO_SECRET"
 
 # Upload to gcp and make it public
 pushd build/web-ext
@@ -23,6 +23,6 @@ popd
 
 export TS_NODE_COMPILER_OPTIONS="{\"module\":\"commonjs\"}"
 
-gsutil ls gs://sourcegraph-for-firefox | xargs yarn ts-node scripts/build-updates-manifest.ts
+gsutil ls gs://sourcegraph-for-firefox | xargs pnpm ts-node scripts/build-updates-manifest.ts
 gsutil cp src/browser-extension/updates.manifest.json gs://sourcegraph-for-firefox/updates.json
 gsutil -m acl set -R -a public-read gs://sourcegraph-for-firefox/updates.json
