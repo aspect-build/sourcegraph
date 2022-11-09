@@ -8,9 +8,10 @@
   },
   "engines": {
     "node": "^v16.7.0",
-    "yarn": "^1.22.4"
+    "pnpm": ">=7"
   },
   "scripts": {
+    "preinstall": "npx only-allow pnpm",
     "format": "prettier '**/{*.{js?(on),ts?(x),graphql,md,scss},.*.js?(on)}' --write --list-different --config prettier.config.js",
     "format:check": "yarn run format --write=false --check --list-different=false --loglevel=warn",
     "_lint:js": "DOCSITE_LIST=\"$(./dev/docsite.sh -config doc/docsite.json ls)\" NODE_OPTIONS=\"--max_old_space_size=16192\" eslint",
@@ -22,7 +23,7 @@
     "lint:css:all": "yarn _lint:css 'client/*/src/**/*.scss'",
     "lint:graphql": "graphql-schema-linter",
     "build-ts": "tsc -b tsconfig.all.json",
-    "build-web": "yarn workspace @sourcegraph/web run build",
+    "build-web": "pnpm -C client/web build",
     "watch-web": "yarn workspace @sourcegraph/web run watch",
     "generate": "gulp generate",
     "watch-generate": "gulp watchGenerate",
@@ -84,12 +85,6 @@
       "browser/build",
       "ui",
       "**/assets"
-    ]
-  },
-  "workspaces": {
-    "packages": [
-      "client/*",
-      "dev/release"
     ]
   },
   "devDependencies": {
@@ -373,9 +368,12 @@
     "@microsoft/fetch-event-source": "^2.0.1",
     "@opentelemetry/api": "^1.1.0",
     "@opentelemetry/context-zone": "^1.5.0",
+    "@opentelemetry/core": "^1.7.0",
     "@opentelemetry/exporter-trace-otlp-http": "^0.31.0",
     "@opentelemetry/instrumentation": "^0.31.0",
     "@opentelemetry/instrumentation-fetch": "^0.31.0",
+    "@opentelemetry/resources": "^1.7.0",
+    "@opentelemetry/sdk-trace-base": "^1.7.0",
     "@opentelemetry/sdk-trace-web": "^1.5.0",
     "@opentelemetry/semantic-conventions": "^1.5.0",
     "@reach/accordion": "^0.16.1",
@@ -387,17 +385,31 @@
     "@reach/visually-hidden": "^0.16.0",
     "@react-aria/live-announcer": "^3.1.0",
     "@sentry/browser": "^7.8.1",
+    "@sourcegraph/branded": "workspace:*",
+    "@sourcegraph/build-config": "workspace:*",
+    "@sourcegraph/client-api": "workspace:*",
+    "@sourcegraph/codeintellify": "workspace:*",
+    "@sourcegraph/common": "workspace:*",
     "@sourcegraph/extension-api-classes": "^1.1.0",
+    "@sourcegraph/http-client": "workspace:*",
+    "@sourcegraph/observability-client": "workspace:*",
+    "@sourcegraph/search": "workspace:*",
+    "@sourcegraph/search-ui": "workspace:*",
+    "@sourcegraph/shared": "workspace:*",
+    "@sourcegraph/template-parser": "workspace:*",
+    "@sourcegraph/wildcard": "workspace:*",
     "@storybook/addon-controls": "^6.5.9",
     "@storybook/addon-knobs": "^6.4.0",
     "@types/react-resizable": "^3.0.2",
     "@visx/annotation": "^2.10.0",
     "@visx/axis": "^2.11.1",
+    "@visx/event": "^2.6.0",
     "@visx/glyph": "^2.10.0",
     "@visx/grid": "^2.10.0",
     "@visx/group": "^2.10.0",
     "@visx/responsive": "^2.10.0",
     "@visx/scale": "^2.2.2",
+    "@visx/shape": "^2.12.2",
     "@visx/voronoi": "^2.10.0",
     "@vscode/codicons": "^0.0.29",
     "@vscode/webview-ui-toolkit": "^0.9.0",
@@ -421,12 +433,14 @@
     "downshift": "^3.4.8",
     "escape-html": "^1.0.3",
     "eventsource": "1.1.1",
+    "fast-json-stable-stringify": "^2.1.0",
     "focus-visible": "^5.2.0",
     "fzy.js": "^0.4.1",
     "got": "^11.5.2",
     "graphiql": "^1.11.5",
     "highlight.js": "^10.5.0",
     "highlightjs-graphql": "^1.0.2",
+    "history": "4.5.1",
     "http-proxy-agent": "^5.0.0",
     "http-status-codes": "^2.1.4",
     "https-browserify": "^1.0.0",
@@ -491,13 +505,15 @@
     "yaml-ast-parser": "^0.0.43",
     "zustand": "^3.6.9"
   },
-  "resolutions": {
-    "history": "4.5.1",
-    "cssnano": "4.1.10",
-    "webpack": "5",
-    "tslib": "2.1.0",
-    "prettier": "2.2.1",
-    "jsprim": "1.4.2"
-  },
-  "packageManager": "yarn@3.2.3"
+  "packageManager": "pnpm@7.14.2",
+  "pnpm": {
+    "overrides": {
+      "cssnano": "4.1.10",
+      "webpack": "5",
+      "tslib": "2.1.0",
+      "prettier": "2.2.1",
+      "jsprim": "1.4.2",
+      "source-map": "^0.7.4"
+    }
+  }
 }
