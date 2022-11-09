@@ -267,8 +267,8 @@ func addVsceIntegrationTests(pipeline *bk.Pipeline) {
 		withYarnCache(),
 		bk.Cmd("yarn --immutable --network-timeout 60000"),
 		bk.Cmd("yarn generate"),
-		bk.Cmd("yarn workspace @sourcegraph/vscode run build:test"),
-		bk.Cmd("yarn workspace @sourcegraph/vscode run test-integration --verbose"),
+		bk.Cmd("pnpm -F @sourcegraph/vscode build:test"),
+		bk.Cmd("pnpm -F @sourcegraph/vscode test-integration --verbose"),
 		bk.AutomaticRetry(1),
 	)
 }
@@ -288,7 +288,7 @@ func addBrowserExtensionIntegrationTests(parallelTestCount int) operations.Opera
 				bk.Env("PERCY_ON", "true"),
 				bk.Env("PERCY_PARALLEL_TOTAL", strconv.Itoa(testCount)),
 				bk.Cmd("yarn --immutable --network-timeout 60000"),
-				bk.Cmd("yarn workspace @sourcegraph/browser run build"),
+				bk.Cmd("pnpm -F @sourcegraph/browser build"),
 				bk.Cmd("yarn run cover-browser-integration"),
 				bk.Cmd("yarn nyc report -r json"),
 				bk.Cmd("dev/ci/codecov.sh -c -F typescript -F integration"),
@@ -308,8 +308,8 @@ func recordBrowserExtensionIntegrationTests(pipeline *bk.Pipeline) {
 			bk.Env("LOG_BROWSER_CONSOLE", "false"),
 			bk.Env("SOURCEGRAPH_BASE_URL", "https://sourcegraph.com"),
 			bk.Cmd("yarn --immutable --network-timeout 60000"),
-			bk.Cmd("yarn workspace @sourcegraph/browser run build"),
-			bk.Cmd("yarn workspace @sourcegraph/browser run record-integration"),
+			bk.Cmd("pnpm -F @sourcegraph/browser build"),
+			bk.Cmd("pnpm -F @sourcegraph/browser record-integration"),
 			// Retry may help in case if command failed due to hitting the rate limit or similar kind of error on the code host:
 			// https://docs.github.com/en/rest/reference/search#rate-limit
 			bk.AutomaticRetry(1),
@@ -334,7 +334,7 @@ func addJetBrainsUnitTests(pipeline *bk.Pipeline) {
 		withYarnCache(),
 		bk.Cmd("yarn --immutable --network-timeout 60000"),
 		bk.Cmd("yarn generate"),
-		bk.Cmd("yarn workspace @sourcegraph/jetbrains run build"),
+		bk.Cmd("pnpm -F @sourcegraph/jetbrains build"),
 	)
 }
 
@@ -514,7 +514,7 @@ func addBrowserExtensionE2ESteps(pipeline *bk.Pipeline) {
 			bk.Env("LOG_BROWSER_CONSOLE", "true"),
 			bk.Env("SOURCEGRAPH_BASE_URL", "https://sourcegraph.com"),
 			bk.Cmd("yarn --immutable --network-timeout 60000"),
-			bk.Cmd("yarn workspace @sourcegraph/browser run build"),
+			bk.Cmd("pnpm -F @sourcegraph/browser build"),
 			bk.Cmd("yarn mocha ./client/browser/src/end-to-end/github.test.ts ./client/browser/src/end-to-end/gitlab.test.ts"),
 			bk.ArtifactPaths("./puppeteer/*.png"))
 	}
@@ -530,21 +530,21 @@ func addBrowserExtensionReleaseSteps(pipeline *bk.Pipeline) {
 	pipeline.AddStep(":rocket::chrome: Extension release",
 		withYarnCache(),
 		bk.Cmd("yarn --immutable --network-timeout 60000"),
-		bk.Cmd("yarn workspace @sourcegraph/browser run build"),
-		bk.Cmd("yarn workspace @sourcegraph/browser release:chrome"))
+		bk.Cmd("pnpm -F @sourcegraph/browser build"),
+		bk.Cmd("pnpm -F @sourcegraph/browser release:chrome"))
 
 	// Build and self sign the FF add-on and upload it to a storage bucket
 	pipeline.AddStep(":rocket::firefox: Extension release",
 		withYarnCache(),
 		bk.Cmd("yarn --immutable --network-timeout 60000"),
-		bk.Cmd("yarn workspace @sourcegraph/browser release:firefox"))
+		bk.Cmd("pnpm -F @sourcegraph/browser release:firefox"))
 
 	// Release to npm
 	pipeline.AddStep(":rocket::npm: npm Release",
 		withYarnCache(),
 		bk.Cmd("yarn --immutable --network-timeout 60000"),
-		bk.Cmd("yarn workspace @sourcegraph/browser run build"),
-		bk.Cmd("yarn workspace @sourcegraph/browser release:npm"))
+		bk.Cmd("pnpm -F @sourcegraph/browser build"),
+		bk.Cmd("pnpm -F @sourcegraph/browser release:npm"))
 }
 
 // Release the VS Code extension.
@@ -554,7 +554,7 @@ func addVsceReleaseSteps(pipeline *bk.Pipeline) {
 		withYarnCache(),
 		bk.Cmd("yarn --immutable --network-timeout 60000"),
 		bk.Cmd("yarn generate"),
-		bk.Cmd("yarn workspace @sourcegraph/vscode run release"))
+		bk.Cmd("pnpm -F @sourcegraph/vscode release"))
 }
 
 // Adds a Buildkite pipeline "Wait".

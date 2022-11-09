@@ -7,7 +7,7 @@
     "yarn": ">1.10.0"
   },
   "scripts": {
-    "storybook": "STORIES_GLOB='client/browser/src/**/*.story.tsx' yarn workspace @sourcegraph/storybook run start",
+    "storybook": "STORIES_GLOB='client/browser/src/**/*.story.tsx' pnpm -F @sourcegraph/storybook start",
     "build-inline-extensions": "node scripts/build-inline-extensions",
     "predev": "yarn run build-inline-extensions",
     "dev": "yarn run predev && NODE_ENV=development NODE_OPTIONS=--max_old_space_size=8192 node -r ts-node/register scripts/development",

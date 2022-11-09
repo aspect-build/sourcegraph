@@ -28,7 +28,7 @@ func addJetBrainsUnitTests(pipeline *bk.Pipeline) {
 		withYarnCache(),
 		bk.Cmd("yarn --immutable --network-timeout 60000"),
 		bk.Cmd("yarn generate"),
-		bk.Cmd("yarn workspace @sourcegraph/jetbrains run build"),
+		bk.Cmd("pnpm -F @sourcegraph/jetbrains build"),
 +   bk.SoftFail(1, 2),
 	)
 }
@@ -58,7 +58,7 @@ func addJetBrainsUnitTests(pipeline *bk.Pipeline) {
 +   }),
     bk.Cmd("yarn --immutable --network-timeout 60000"),
     bk.Cmd("yarn generate"),
-    bk.Cmd("yarn workspace @sourcegraph/jetbrains run build"),
+    bk.Cmd("pnpm -F @sourcegraph/jetbrains build"),
 +   bk.SoftFail(1, 2),
 +   
 	)
@@ -86,7 +86,7 @@ unc addJetBrainsUnitTests(pipeline *bk.Pipeline) {
     }),
 -   bk.Cmd("yarn --immutable --network-timeout 60000"),
 -   bk.Cmd("yarn generate"),
--   bk.Cmd("yarn workspace @sourcegraph/jetbrains run build"),
+-   bk.Cmd("pnpm -F @sourcegraph/jetbrains build"),
 +   bk.Cmd("please-fail-lol"),
 -   bk.SoftFail(1, 2),
 +   bk.SoftFail(127), // 127 is the exit code when a command isn't found, see the line above.

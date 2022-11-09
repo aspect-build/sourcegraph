@@ -142,7 +142,7 @@ if [ -z "${renderServiceId}" ]; then
             \"pullRequestPreviewsEnabled\": \"no\",
             \"envSpecificDetails\": {
                 \"buildCommand\": \"dev/ci/yarn-build.sh client/web\",
-                \"startCommand\": \"yarn workspace @sourcegraph/web serve:prod\"
+                \"startCommand\": \"pnpm -F @sourcegraph/web serve:prod\"
             },
             \"numInstances\": 1,
             \"plan\": \"starter\",

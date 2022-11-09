@@ -475,7 +475,7 @@ We run Lighthouse performance tests through [Lighthouse CI](https://github.com/G
 
 #### Running the tests locally
 
-1. Create a production bundle that can be served locally. `NODE_ENV=production WEBPACK_SERVE_INDEX=true yarn workspace @sourcegraph/web build`
+1. Create a production bundle that can be served locally. `NODE_ENV=production WEBPACK_SERVE_INDEX=true pnpm -F @sourcegraph/web build`
 2. Run the Lighthouse CI tests. `yarn test-lighthouse`. This will automatically serve the production bundle and start running audits through Puppeteer. Note: It's possible to provide different URLs or config through editing `lighthouserc.js` or by providing CLI flags to this command.
 
 #### Running the tests in CI
@@ -500,8 +500,8 @@ If none of the above is applicable, we might need to consider adjusting our limi
 To analyze web application bundles, we use [the Statoscope webpack-plugin](https://github.com/statoscope/statoscope/tree/master/packages/webpack-plugin) that generates HTML reports from webpack-stats. The best way to understand the bundlesize increase is to compare webpack-stats generated in the failing branch vs. the stats on the `main` branch. From the repo root, run the following commands:
 
 1. Install [the Statoscope CLI](https://github.com/statoscope/statoscope/tree/master/packages/cli) locally: `npm i @statoscope/cli -g`.
-2. Generate Webpack stats on the `main` branch: `WEBPACK_STATS_NAME=main yarn workspace @sourcegraph/web run analyze-bundle`.
-3. Generate Webpack stats on the failing branch: `WEBPACK_STATS_NAME=my-branch yarn workspace @sourcegraph/web run analyze-bundle`.
+2. Generate Webpack stats on the `main` branch: `WEBPACK_STATS_NAME=main pnpm -F @sourcegraph/web analyze-bundle`.
+3. Generate Webpack stats on the failing branch: `WEBPACK_STATS_NAME=my-branch pnpm -F @sourcegraph/web analyze-bundle`.
 4. Compare stats using Statoscope CLI: `statoscope generate -i ./ui/assets/stats-main-XXX.json -r ./ui/assets/stats-my-branch-XXX.json -o -t ./ui/assets/compare-report.html`
 5. The generated HTML report should be automatically opened in the new browser tab.
 6. Click "Diff" at the top right corner and select the `reference.json` stats.

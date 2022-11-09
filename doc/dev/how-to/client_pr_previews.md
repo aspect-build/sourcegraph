@@ -8,7 +8,7 @@ A link to a deployed preview is automatically added to the bottom of the PR desc
 
 ```sh
 dev/ci/yarn-build.sh client/web
-yarn workspace @sourcegraph/web serve:prod
+pnpm -F @sourcegraph/web serve:prod
 ```
 
 The standalone web server is deployed as [a web service](https://render.com/docs/web-services) to [render.com](https://render.com/) via [a Buildkite step](https://sourcegraph.com/search?q=context:global+repo:sourcegraph/sourcegraph%24+prPreview%28%29&patternType=literal).
