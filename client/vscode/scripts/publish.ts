@@ -37,7 +37,7 @@ const commands = {
 }
 // Publish the extension with the correct extension name "sourcegraph"
 try {
-    childProcess.execSync('yarn build-inline-extensions && yarn build', { stdio: 'inherit' })
+    childProcess.execSync('pnpm build-inline-extensions && pnpm build', { stdio: 'inherit' })
     // Get the latest release version nubmer of the last release from VS Code Marketplace using the vsce cli tool
     const response = childProcess.execSync(commands.vscode_info).toString()
     /*
