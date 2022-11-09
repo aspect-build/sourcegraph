@@ -19,7 +19,7 @@
   ],
   "sideEffects": false,
   "scripts": {
-    "lint:js": "pnpm eslint 'src/**/*.[jt]s?(x)'",
+    "lint:js": "eslint 'src/**/*.[jt]s?(x)'",
     "prepublish": "pnpm eslint"
   },
   "peerDependencies": {

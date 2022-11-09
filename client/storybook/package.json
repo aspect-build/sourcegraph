@@ -7,7 +7,7 @@
   "license": "Apache-2.0",
   "main": "./src/index.ts",
   "scripts": {
-    "lint:js": "pnpm eslint --cache 'src/**/*.[jt]s?(x)'",
+    "lint:js": "eslint --cache 'src/**/*.[jt]s?(x)'",
     "start": "TS_NODE_TRANSPILE_ONLY=true yarn run -T start-storybook -p 9001 -c ./src",
     "start:chromatic": "CHROMATIC=true TS_NODE_TRANSPILE_ONLY=true yarn run -T start-storybook -p 9001 -c ./src",
     "build": "TS_NODE_TRANSPILE_ONLY=true yarn run -T build-storybook -c ./src",

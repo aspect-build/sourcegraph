@@ -5,7 +5,7 @@
   "license": "Apache-2.0",
   "scripts": {
     "storybook": "STORIES_GLOB='client/shared/src/**/*.story.tsx' yarn workspace @sourcegraph/storybook run start",
-    "lint:js": "pnpm eslint --cache '**/*.[jt]s?(x)'",
+    "lint:js": "eslint --cache '**/*.[jt]s?(x)'",
     "lint:css": "pnpm stylelint 'src/**/*.scss' --quiet",
     "test": "yarn run -T jest",
     "graphql": "yarn run -T gulp graphQlSchema",

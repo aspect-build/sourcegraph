@@ -23,7 +23,7 @@
     "lint:css:all": "pnpm _lint:css 'client/*/src/**/*.scss'",
     "lint:graphql": "graphql-schema-linter",
     "build-ts": "tsc -b tsconfig.all.json",
-    "build-web": "pnpm -C client/web build",
+    "build-web": "pnpm -F @sourcegraph/web build",
     "watch-web": "yarn workspace @sourcegraph/web run watch",
     "generate": "gulp generate",
     "watch-generate": "gulp watchGenerate",
