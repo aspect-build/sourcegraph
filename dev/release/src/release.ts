@@ -539,7 +539,7 @@ cc @${config.captainGitHubUsername}
                                 const items: string[] = []
                                 items.push(
                                     'Ensure all other pull requests in the batch change have been merged',
-                                    'Run `yarn run release release:finalize` to generate the tags required. CI will not pass until this command is run.',
+                                    'Run `pnpm release release:finalize` to generate the tags required. CI will not pass until this command is run.',
                                     'Re-run the build on this branch (using either `sg ci build --wait` or the Buildkite UI) and merge when the build passes.'
                                 )
                                 return items
@@ -658,7 +658,7 @@ Batch change: ${batchChangeURL}`,
         id: 'release:add-to-batch-change',
         description: 'Manually add a change to a release batch change',
         argNames: ['changeRepo', 'changeID'],
-        // Example: yarn run release release:add-to-batch-change sourcegraph/about 1797
+        // Example: pnpm release release:add-to-batch-change sourcegraph/about 1797
         run: async (config, changeRepo, changeID) => {
             const { upcoming: release } = await releaseVersions(config)
             if (!changeRepo || !changeID) {
@@ -830,7 +830,7 @@ ${patchRequestIssues.map(issue => `* #${issue.number}`).join('\n')}`
         id: '_test:batchchange-create-from-changes',
         description: 'Test batch changes integration',
         argNames: ['batchchangeConfigJSON'],
-        // Example: yarn run release _test:batchchange-create-from-changes "$(cat ./.secrets/test-batch-change-import.json)"
+        // Example: pnpm release _test:batchchange-create-from-changes "$(cat ./.secrets/test-batch-change-import.json)"
         run: async (_config, batchchangeConfigJSON) => {
             const batchChangeConfig = JSON.parse(batchchangeConfigJSON) as {
                 changes: CreatedChangeset[]
