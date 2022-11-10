@@ -10,6 +10,7 @@ package-lock.json
 puppeteer/
 src/backend/graphqlschema.ts
 yarn-error.log
+.pnpm-debug.log
 /ui/assets/*
 !/ui/assets/img
 !/ui/assets/img/*
