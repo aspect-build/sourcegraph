@@ -68,7 +68,8 @@ var Targets = []Target{
 		Checks: []*linter{
 			tsEnterpriseImport,
 			inlineTemplates,
-			runScript("Yarn duplicate", "dev/check/yarn-deduplicate.sh"),
+			// TODO(pnpm): is there a pnpm deduplicate tool?
+			// runScript("Yarn duplicate", "dev/check/yarn-deduplicate.sh"),
 			checkUnversionedDocsLinks(),
 		},
 	},

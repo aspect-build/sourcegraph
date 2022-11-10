@@ -1047,7 +1047,7 @@ tests:
       commonly with: `sg start enterprise-e2e`
 
       See more details: https://docs.sourcegraph.com/dev/how-to/testing#running-end-to-end-tests
-    cmd: yarn run test-e2e
+    cmd: pnpm test-e2e
     env:
       TEST_USER_EMAIL: test@sourcegraph.com
       TEST_USER_PASSWORD: supersecurepassword
@@ -1065,7 +1065,7 @@ tests:
 
       See more details: https://docs.sourcegraph.com/dev/how-to/testing#running-regression-tests
 
-    cmd: yarn run test-regression
+    cmd: pnpm test-regression
     env:
       SOURCEGRAPH_SUDO_USER: test
       SOURCEGRAPH_BASE_URL: https://sourcegraph.test:3443
@@ -1079,7 +1079,7 @@ tests:
 
       See more details: https://docs.sourcegraph.com/dev/how-to/testing#running-integration-tests
 
-    cmd: yarn run test-integration
+    cmd: pnpm test-integration
 
   web-integration:debug:
     preamble: |
@@ -1088,4 +1088,4 @@ tests:
 
       See more details: https://docs.sourcegraph.com/dev/how-to/testing#running-integration-tests
 
-    cmd: yarn run test-integration:debug
+    cmd: pnpm test-integration:debug

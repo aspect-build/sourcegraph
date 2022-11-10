@@ -282,7 +282,7 @@ Output variables that are set after the [`steps.run`](#steps-run) command has be
 
 ```yaml
 steps:
-  - run: yarn upgrade
+  - run: pnpm upgrade
     container: alpine:3
     outputs:
       # Set output `friendlyMessage`

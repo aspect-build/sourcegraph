@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 set -eu -o pipefail
 
+# TODO(pnpm): is there a pnpm deduplicate tool?
+
 echo "--- check yarn.lock for duplicates"
 
 # Prevent duplicates in yarn.lock/node_modules that lead to errors and bloated bundle sizes

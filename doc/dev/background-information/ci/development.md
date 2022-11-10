@@ -142,10 +142,10 @@ Will result in a single trace span for the `./dev/check/docsite.sh` script. But 
 ```go
   pipeline.AddStep(fmt.Sprintf(":%s: Puppeteer tests for %s extension", browser, browser),
     // ...
-    bk.Cmd("yarn --immutable --network-timeout 60000"),
+    bk.Cmd("pnpm install --fetch-timeout 60000"),
     bk.Cmd("pnpm -F @sourcegraph/browser -s run build"),
-    bk.Cmd("yarn run cover-browser-integration"),
-    bk.Cmd("yarn nyc report -r json"),
+    bk.Cmd("pnpm cover-browser-integration"),
+    bk.Cmd("pnpm nyc report -r json"),
     bk.Cmd("dev/ci/codecov.sh -c -F typescript -F integration"),
 ```
 
@@ -168,7 +168,7 @@ The pipeline generator provides an API for this that, at a high level, works lik
   ```go
   pipeline.AddStep(":jest::globe_with_meridians: Test",
     withYarnCache(),
-    bk.AnnotatedCmd("dev/ci/yarn-test.sh client/web", bk.AnnotatedCmdOpts{
+    bk.AnnotatedCmd("dev/ci/pnpm-test.sh client/web", bk.AnnotatedCmdOpts{
       TestReports: &bk.TestReportOpts{/* ... */},
     }),
   ```
