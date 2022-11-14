@@ -1,5 +1,5 @@
 {
-  "name": "sourcegraph",
+  "name": "@sourcegraph/extension-api",
   "version": "25.7.0",
   "license": "Apache-2.0",
   "description": "Sourcegraph extension API: build extensions that enhance reading and reviewing code in your existing tools",
