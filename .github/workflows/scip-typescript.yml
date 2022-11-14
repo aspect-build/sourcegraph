@@ -15,8 +15,8 @@ jobs:
       - name: Install npm dependencies
         run: pnpm install
       - run: pnpm generate
-      # TODO: dlx?
-      - run: pnpm dlx -p @sourcegraph/scip-typescript scip-typescript index --yarn-berry-workspaces
+        # TODO(aspect): Does the scip-typescript indexer need to be updated to work with pnpm workspaces?
+      - run: pnpm --package=@sourcegraph/scip-typescript dlx scip-typescript index --yarn-berry-workspaces
       - run: cp index.scip dump.lsif-typed
       - name: Install src-cli
         run: |
