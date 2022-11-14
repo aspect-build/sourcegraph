@@ -94,6 +94,7 @@ importers:
       '@sourcegraph/stylelint-plugin-sourcegraph': ^1.0.1
       '@sourcegraph/template-parser': workspace:*
       '@sourcegraph/tsconfig': ^4.0.1
+      '@sourcegraph/web': workspace:*
       '@sourcegraph/wildcard': workspace:*
       '@statoscope/cli': ^5.24.0
       '@statoscope/webpack-plugin': ^5.20.1
@@ -471,6 +472,7 @@ importers:
       '@sourcegraph/search-ui': link:client/search-ui
       '@sourcegraph/shared': link:client/shared
       '@sourcegraph/template-parser': link:client/template-parser
+      '@sourcegraph/web': link:client/web
       '@sourcegraph/wildcard': link:client/wildcard
       '@storybook/addon-controls': 6.5.9_voxh6azi7d7b7ftvkag6lbtiga
       '@storybook/addon-knobs': 6.4.0_ca5jul5yv63wv7bfwf4cx6fjaq
