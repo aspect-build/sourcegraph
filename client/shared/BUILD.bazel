@@ -1,0 +1,9 @@
+load("//client/shared/dev:generate_graphql_operations.bzl", "generate_graphql_operations")
+
+generate_graphql_operations(
+    name = "graphql_operations",
+    srcs = [
+        "//client/shared/src:graphql_operations_files",
+    ],
+    interface_name = "SharedGraphQlOperations",
+)
