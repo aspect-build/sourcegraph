@@ -1,0 +1,3 @@
+load("//client:tools.bzl", "module_style_typings")
+
+module_style_typings(deps = ["//client/wildcard/src"])
