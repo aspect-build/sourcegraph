@@ -1,4 +1,29 @@
-load("@aspect_rules_js//js:defs.bzl", "js_binary", "js_run_binary")
+load("@aspect_rules_js//js:defs.bzl", "js_binary", "js_library", "js_run_binary")
+
+js_library(
+    name = "src",
+    srcs = glob([
+        "**/*",
+    ]) + [
+        ":graphql_schema",
+    ],
+)
+
+js_library(
+    name = "graphql_operations_files",
+    # Keep in sync with glob in client/shared/dev/generateGraphQlOperations.js
+    srcs = glob(
+        [
+            "**/*.ts",
+            "**/*.tsx",
+        ],
+        [
+            "testing/**/*.*",
+            "schema.ts",
+        ],
+    ),
+    visibility = ["//client/shared:__pkg__"],
+)
 
 js_binary(
     name = "generate_graphql_schema",
