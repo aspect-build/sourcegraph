@@ -1,0 +1,16 @@
+load("//client:tools.bzl", "module_style_typings")
+load("@aspect_rules_js//js:defs.bzl", "js_library")
+
+module_style_typings(deps = ["//client/wildcard/src"])
+
+js_library(
+    name = "graphql_operations_files",
+    # Keep in sync with glob in client/shared/dev/generateGraphQlOperations.js
+    srcs = glob(
+        [
+            "**/*.ts",
+            "**/*.tsx",
+        ],
+    ),
+    visibility = ["//client/jetbrains:__pkg__"],
+)

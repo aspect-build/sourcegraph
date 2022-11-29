@@ -1,4 +1,7 @@
 load("@aspect_rules_js//js:defs.bzl", "js_binary", "js_library", "js_run_binary")
+load("//client:tools.bzl", "module_style_typings")
+
+module_style_typings()
 
 js_library(
     name = "src",
