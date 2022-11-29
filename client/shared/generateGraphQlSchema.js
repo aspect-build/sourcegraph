@@ -16,7 +16,7 @@ const { buildSchema, introspectionFromSchema } = require('graphql')
 const { mkdir, readFile, writeFile } = require('mz/fs')
 const { format, resolveConfig } = require('prettier')
 
-const GRAPHQL_SCHEMA_GLOB = path.join(__dirname, '../../../cmd/frontend/graphqlbackend/*.graphql')
+const GRAPHQL_SCHEMA_GLOB = path.join(__dirname, '../../cmd/frontend/graphqlbackend/*.graphql')
 
 async function main(args) {
   if (args.length !== 1) {
@@ -35,7 +35,7 @@ async function main(args) {
 
   const result = introspectionFromSchema(schema)
 
-  const formatOptions = await resolveConfig(__dirname, { config: __dirname + '/../../../prettier.config.js' })
+  const formatOptions = await resolveConfig(__dirname, { config: __dirname + '/../../prettier.config.js' })
   const typings =
     'export type ID = string\n' +
     'export type GitObjectID = string\n' +
