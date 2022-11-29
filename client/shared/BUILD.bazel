@@ -1,0 +1,52 @@
+load("//client/shared/dev:generate_graphql_operations.bzl", "generate_graphql_operations")
+load("@aspect_rules_js//js:defs.bzl", "js_binary", "js_library", "js_run_binary")
+
+generate_graphql_operations(
+    name = "graphql_operations",
+    srcs = [
+        ":graphql_operations_files",
+    ],
+    interface_name = "SharedGraphQlOperations",
+    output = "src/graphql-operations.ts",
+)
+
+js_library(
+    name = "graphql_operations_files",
+    # Keep in sync with glob in client/shared/dev/generateGraphQlOperations.js
+    srcs = glob(
+        [
+            "src/**/*.ts",
+            "src/**/*.tsx",
+        ],
+        [
+            "src/testing/**/*.*",
+            "src/schema.ts",
+        ],
+    ),
+    visibility = ["//client/shared:__pkg__"],
+)
+
+js_binary(
+    name = "generate_graphql_schema",
+    data = [
+        "//:node_modules/@gql2ts/from-schema",
+        "//:node_modules/@gql2ts/language-typescript",
+        "//:node_modules/glob",
+        "//:node_modules/graphql",
+        "//:node_modules/mz",
+        "//:node_modules/prettier",
+        "//:prettier_config_js",
+        "//cmd/frontend/graphqlbackend:graphql_schema",
+    ],
+    entry_point = "generateGraphQlSchema.js",
+)
+
+js_run_binary(
+    name = "graphql_schema",
+    outs = ["src/schema.ts"],
+    args = [
+        "src/schema.ts",
+    ],
+    chdir = package_name(),
+    tool = ":generate_graphql_schema",
+)
