@@ -3,12 +3,13 @@
  *
  * Usage: <schemaName>
  *
- *   schemaName - extensionless name of the schema.json file to generate types for
+ * schemaName - extensionless name of the schema.json file to generate types for
  */
+
+const path = require('path')
 
 const { compile: compileJSONSchema } = require('json-schema-to-typescript')
 const { mkdir, readFile, writeFile } = require('mz/fs')
-const path = require('path')
 
 const schemaDirectory = path.join(__dirname, '..', '..', '..', '..', 'schema')
 const outputDirectory = __dirname
@@ -29,7 +30,7 @@ async function main(args) {
     process.exit(1)
   }
 
-  const schemaName = args[0]
+  const schemaName = String(args[0])
 
   let schema = await readFile(path.join(schemaDirectory, `${schemaName}.schema.json`), 'utf8')
 
@@ -53,4 +54,5 @@ async function main(args) {
   await writeFile(path.join(outputDirectory, `${schemaName}.schema.d.ts`), types)
 }
 
+// eslint-disable-next-line @typescript-eslint/no-floating-promises
 ;(async () => await main(process.argv.slice(2)))()
