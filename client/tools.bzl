@@ -1,6 +1,5 @@
 "Bazel macros for building frontend packages"
 
-load("@aspect_rules_js//js:defs.bzl", "js_library")
 load("@npm//:typed-scss-modules/package_json.bzl", types_scss_modules_bin = "bin")
 
 def module_style_typings(name = "module_style_typings", deps = []):
@@ -20,11 +19,6 @@ def module_style_typings(name = "module_style_typings", deps = []):
     ])
 
     outs = ["%s.d.ts" % src for src in srcs]
-
-    js_library(
-        name = "%s_sources" % name,
-        srcs = srcs,
-    )
 
     types_scss_modules_bin.tsm(
         name = name,
