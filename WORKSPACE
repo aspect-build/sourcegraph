@@ -15,9 +15,9 @@ bazel_skylib_workspace()
 
 http_archive(
     name = "aspect_rules_js",
-    sha256 = "f58d7be1bb0e4b7edb7a0085f969900345f5914e4e647b4f0d2650d5252aa87d",
-    strip_prefix = "rules_js-1.8.0",
-    url = "https://github.com/aspect-build/rules_js/archive/refs/tags/v1.8.0.tar.gz",
+    sha256 = "50ff9396e707b5fbf8c5e9dbd23777c7c999dddc53a39d511ffecf7c8b285cd6",
+    strip_prefix = "rules_js-1.9.0",
+    url = "https://github.com/aspect-build/rules_js/archive/refs/tags/v1.9.0.tar.gz",
 )
 
 load("@aspect_rules_js//js:repositories.bzl", "rules_js_dependencies")
