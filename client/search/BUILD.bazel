@@ -1,8 +1,8 @@
 load("//client/shared/dev:generate_graphql_operations.bzl", "generate_graphql_operations")
 load("@aspect_rules_js//js:defs.bzl", "js_library")
 
-js_library(
-    name = "graphql_operations_files",
+generate_graphql_operations(
+    name = "graphql_operations",
     # Keep in sync with glob in client/shared/dev/generateGraphQlOperations.js
     srcs = glob(
         [
@@ -10,12 +10,5 @@ js_library(
             "src/**/*.tsx",
         ],
     ),
-)
-
-generate_graphql_operations(
-    name = "graphql_operations",
-    srcs = [
-        ":graphql_operations_files",
-    ],
     interface_name = "SearchGraphQlOperations",
 )

@@ -1,19 +1,10 @@
 load("//client/shared/dev:generate_graphql_operations.bzl", "generate_graphql_operations")
 load("//client:tools.bzl", "module_style_typings", "ts_project", "web_bundle")
-load("@aspect_rules_js//js:defs.bzl", "js_library")
 
 module_style_typings(deps = ["//client/wildcard/src"])
 
 generate_graphql_operations(
     name = "graphql_operations",
-    srcs = [
-        "//client/web:graphql_operations_files",
-    ],
-    interface_name = "WebGraphQlOperations",
-)
-
-js_library(
-    name = "graphql_operations_files",
     # Keep in sync with glob in client/shared/dev/generateGraphQlOperations.js
     srcs = glob(
         [
@@ -24,7 +15,7 @@ js_library(
             "src/end-to-end/**/*.*",
         ],
     ),
-    visibility = ["//client/web:__pkg__"],
+    interface_name = "WebGraphQlOperations",
 )
 
 ts_project(
