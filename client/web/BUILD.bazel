@@ -1,5 +1,5 @@
 load("//client/shared/dev:generate_graphql_operations.bzl", "generate_graphql_operations")
-load("//client:tools.bzl", "module_style_typings")
+load("//client:tools.bzl", "module_style_typings", "ts_project", "web_bundle")
 load("@aspect_rules_js//js:defs.bzl", "js_library")
 
 module_style_typings(deps = ["//client/wildcard/src"])
@@ -25,4 +25,36 @@ js_library(
         ],
     ),
     visibility = ["//client/web:__pkg__"],
+)
+
+ts_project(
+    name = "web",
+    srcs = glob(
+        [
+            "src/**/*.ts",
+            "src/**/*.tsx",
+            "dev/**/*.ts",
+        ],
+        exclude = [
+            "src/**/*.test.tsx",
+            "src/**/*.test.ts",
+            "src/**/__mocks__/*",
+            "src/**/mocks/*",
+        ],
+    ),
+
+    # TODO: drop once stable
+    tags = ["manual"],
+    visibility = ["//visibility:__pkg__"],
+    deps = [
+    ],
+)
+
+web_bundle(
+    name = "bundle",
+    entry_point = "//client/web/src:main.js",
+
+    # TODO: drop once stable
+    tags = ["manual"],
+    visibility = ["//visibility:public"],
 )

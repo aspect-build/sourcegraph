@@ -1,0 +1,20 @@
+load("//client:tools.bzl", "sg_node_package")
+
+sg_node_package(
+    name = "build-config",
+    deps = [
+        "//:node_modules/@statoscope/webpack-plugin",
+        "//:node_modules/@types/sass",
+        "//:node_modules/@types/signale",
+        "//:node_modules/@types/terser-webpack-plugin",
+        "//:node_modules/enhanced-resolve",
+        "//:node_modules/esbuild",
+        "//:node_modules/monaco-editor-webpack-plugin",
+        "//:node_modules/postcss",
+        "//:node_modules/postcss-modules",
+        "//:node_modules/sass",
+        "//:node_modules/signale",
+        "//:node_modules/terser-webpack-plugin",
+        "//:node_modules/webpack",
+    ],
+)

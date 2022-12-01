@@ -40,6 +40,13 @@ http_archive(
     url = "https://github.com/aspect-build/rules_jest/archive/refs/tags/v0.12.1.tar.gz",
 )
 
+http_archive(
+    name = "aspect_rules_esbuild",
+    sha256 = "f9b5bf16251e3e4e127337ef968e6a398c9a4f353f1730e6c7ff6c9a8981e858",
+    strip_prefix = "rules_esbuild-0.13.4",
+    url = "https://github.com/aspect-build/rules_esbuild/archive/refs/tags/v0.13.4.tar.gz",
+)
+
 load("@aspect_rules_js//js:repositories.bzl", "rules_js_dependencies")
 
 rules_js_dependencies()
@@ -91,3 +98,16 @@ npm_repositories()
 load("@aspect_rules_ts//ts:repositories.bzl", "rules_ts_dependencies", LATEST_TS_VERSION = "LATEST_VERSION")
 
 rules_ts_dependencies(ts_version = LATEST_TS_VERSION)
+
+# esbuild deps
+load("@aspect_rules_esbuild//esbuild:dependencies.bzl", "rules_esbuild_dependencies")
+
+rules_esbuild_dependencies()
+
+# esbuild toolchain
+load("@aspect_rules_esbuild//esbuild:repositories.bzl", "esbuild_register_toolchains", LATEST_ESBUILD_VERSION = "LATEST_VERSION")
+
+esbuild_register_toolchains(
+    name = "esbuild",
+    esbuild_version = LATEST_ESBUILD_VERSION,
+)
