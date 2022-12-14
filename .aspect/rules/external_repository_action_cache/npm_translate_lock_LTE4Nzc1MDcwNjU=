@@ -1,15 +1,15 @@
 # Input hashes for repository rule npm_translate_lock(name = "npm", pnpm_lock = "//:pnpm-lock.yaml").
 # This file should be checked into version control along with the pnpm-lock.yaml file.
 .npmrc=2146577291
-pnpm-lock.yaml=-484785081
-yarn.lock=-1942782945
-package.json=-1077656353
+pnpm-lock.yaml=-1838040676
+yarn.lock=-1386403654
+package.json=660996369
 client/branded/package.json=784076174
 client/browser/package.json=-2024393090
 client/build-config/package.json=-745736751
 client/client-api/package.json=704860991
 client/codeintellify/package.json=26663532
-client/common/package.json=762582044
+client/common/package.json=-486096235
 client/eslint-plugin-wildcard/package.json=721508932
 client/extension-api-types/package.json=-2002856453
 client/extension-api/package.json=-1763899027
@@ -26,4 +26,4 @@ client/web/package.json=-1637464847
 client/wildcard/package.json=362918481
 client/vscode/package.json=1345248728
 dev/release/package.json=1426426960
-pnpm-workspace.yaml=-842641978
+pnpm-workspace.yaml=-1949047588

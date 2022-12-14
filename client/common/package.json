@@ -9,5 +9,26 @@
   "scripts": {
     "lint:js": "yarn run -T eslint --cache 'src/**/*.[jt]s?(x)'",
     "test": "yarn run -T jest"
+  },
+  "dependencies": {
+    "highlightjs-graphql": "*",
+    "highlight.js": "*",
+    "lodash": "*",
+    "marked": "*",
+    "sanitize-html": "*",
+    "utility-types": "*",
+    "@sourcegraph/extension-api-types": "workspace:*",
+    "jsonc-parser": "*",
+    "rxjs": "*"
+  },
+  "devDependencies": {
+    "@types/highlight.js": "*",
+    "@types/jest": "*",
+    "@types/sanitize-html": "*",
+    "@types/lodash": "*",
+    "@types/marked": "*",
+    "@types/node": "*",
+    "mockdate": "*",
+    "jest-fetch-mock": "*"
   }
 }
