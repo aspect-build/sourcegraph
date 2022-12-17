@@ -2,7 +2,7 @@ import { DecoratorFn, Meta, Story } from '@storybook/react'
 import { startOfDay, subDays } from 'date-fns'
 
 import { BrandedStory } from '@sourcegraph/branded/src/components/BrandedStory'
-import webStyles from '@sourcegraph/web/src/SourcegraphWebApp.scss'
+import webStyles from '../../../../SourcegraphWebApp.scss'
 
 import { DateRangeSelect } from './DateRangeSelect'
 

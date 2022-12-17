@@ -12,7 +12,7 @@ import { mdiClockOutline } from '@mdi/js'
 import classNames from 'classnames'
 
 import { pluralize } from '@sourcegraph/common'
-import { SyntaxHighlightedSearchQuery } from '@sourcegraph/search-ui'
+import { SyntaxHighlightedSearchQuery } from '../components'
 import { RecentSearch } from '@sourcegraph/shared/src/settings/temporary/recentSearches'
 import { TelemetryProps } from '@sourcegraph/shared/src/telemetry/telemetryService'
 // eslint-disable-next-line no-restricted-imports

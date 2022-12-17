@@ -5,7 +5,7 @@ import * as monaco from 'monaco-editor'
 import { Subscription, Subject } from 'rxjs'
 import { map, distinctUntilChanged } from 'rxjs/operators'
 
-import { Shortcut } from '@sourcegraph/shared/src/react-shortcuts'
+import { Shortcut } from '../react-shortcuts'
 
 import { KeyboardShortcut } from '../keyboardShortcuts'
 import { ThemeProps } from '../theme'

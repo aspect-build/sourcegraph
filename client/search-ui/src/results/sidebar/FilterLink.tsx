@@ -3,7 +3,7 @@ import React from 'react'
 import classNames from 'classnames'
 
 import { pluralize } from '@sourcegraph/common'
-import { SyntaxHighlightedSearchQuery, CodeHostIcon } from '@sourcegraph/search-ui'
+import { SyntaxHighlightedSearchQuery, CodeHostIcon } from '../../components'
 import { displayRepoName } from '@sourcegraph/shared/src/components/RepoLink'
 import { Settings } from '@sourcegraph/shared/src/schema/settings.schema'
 import { FilterType } from '@sourcegraph/shared/src/search/query/filters'

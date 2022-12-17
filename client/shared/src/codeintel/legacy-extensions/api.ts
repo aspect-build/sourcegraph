@@ -3,7 +3,7 @@
 import { Observable } from 'rxjs'
 
 import { GraphQLResult } from '@sourcegraph/http-client'
-import { Settings, SettingsCascade } from '@sourcegraph/shared/src/settings/settings'
+import { Settings, SettingsCascade } from '../../settings/settings'
 
 import { PlatformContext } from '../../platform/context'
 

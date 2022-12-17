@@ -12,7 +12,7 @@ import { Key } from 'ts-key-enum'
 
 import { ContributableMenu, Contributions, Evaluated } from '@sourcegraph/client-api'
 import { memoizeObservable, logger } from '@sourcegraph/common'
-import { Shortcut } from '@sourcegraph/shared/src/react-shortcuts'
+import { Shortcut } from '../react-shortcuts'
 import {
     ButtonProps,
     ForwardReferenceComponent,

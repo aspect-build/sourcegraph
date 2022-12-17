@@ -3,7 +3,7 @@ import * as H from 'history'
 
 import { BrandedStory } from '@sourcegraph/branded/src/components/BrandedStory'
 import { MockedTestProvider } from '@sourcegraph/shared/src/testing/apollo'
-import webStyles from '@sourcegraph/web/src/SourcegraphWebApp.scss'
+import webStyles from '../SourcegraphWebApp.scss'
 
 import { ReferencesPanelWithMemoryRouter } from './ReferencesPanel'
 import { buildReferencePanelMocks, defaultProps } from './ReferencesPanel.mocks'
