@@ -1,0 +1,11 @@
+---
+tasks:
+  warming:
+  branch_freshness:
+  test:
+    targets:
+      - //client/...
+    flags:
+      - --nocheck_visibility
+      - --test_output=summary
+      - --remote_download_minimal
