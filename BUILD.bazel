@@ -2,6 +2,7 @@ load("@io_bazel_rules_go//go:def.bzl", "go_library")
 load("@npm//:defs.bzl", "npm_link_all_packages")
 load("@aspect_rules_js//js:defs.bzl", "js_library")
 load("@aspect_rules_ts//ts:defs.bzl", "ts_config")
+load("@buildifier_prebuilt//:rules.bzl", "buildifier")
 
 # Gazelle config
 #
@@ -60,6 +61,14 @@ gazelle(
     gazelle = ":gazelle-buf",
 )
 
+gazelle(
+    name = "gazelle.check",
+    extra_args = [
+        "-mode",
+        "diff",
+    ],
+)
+
 go_library(
     name = "sourcegraph",
     srcs = [
@@ -110,3 +119,12 @@ js_library(
 )
 
 exports_files(["go.mod"])
+
+buildifier(
+    name = "buildifier.check",
+    exclude_patterns = [
+        "./.git/*",
+    ],
+    lint_mode = "warn",
+    mode = "diff",
+)

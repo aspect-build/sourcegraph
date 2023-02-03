@@ -83,6 +83,15 @@ http_archive(
     ],
 )
 
+http_archive(
+    name = "buildifier_prebuilt",
+    sha256 = "95387c9dded7f8e3bdd4c598bc2ca4fbb6366cb214fa52e7d7b689eb2f421e01",
+    strip_prefix = "buildifier-prebuilt-6.0.0",
+    urls = [
+        "https://github.com/keith/buildifier-prebuilt/archive/6.0.0.tar.gz",
+    ],
+)
+
 # Node toolchain setup ==========================
 load("@rules_nodejs//nodejs:repositories.bzl", "DEFAULT_NODE_VERSION", "nodejs_register_toolchains")
 
@@ -172,3 +181,12 @@ gazelle_dependencies()
 load("@com_google_protobuf//:protobuf_deps.bzl", "protobuf_deps")
 
 protobuf_deps()
+
+# buildifier setup
+load("@buildifier_prebuilt//:deps.bzl", "buildifier_prebuilt_deps")
+
+buildifier_prebuilt_deps()
+
+load("@buildifier_prebuilt//:defs.bzl", "buildifier_prebuilt_register_toolchains")
+
+buildifier_prebuilt_register_toolchains()
