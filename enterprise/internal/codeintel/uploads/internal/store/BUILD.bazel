@@ -11,9 +11,9 @@ go_library(
         "store_dependency_index.go",
         "store_dumps.go",
         "store_export.go",
-        # TODO JH: I don't know what this isn't getting picked up by Gazelle
-        "store_index.go",  # keep
+        "store_index.go",
         "store_packages.go",
+        "store_ranking.go",
         "store_reconcile.go",
         "store_references.go",
         "store_repositories.go",
@@ -44,7 +44,9 @@ go_library(
         "@com_github_lib_pq//:pq",
         "@com_github_opentracing_opentracing_go//log",
         "@com_github_sourcegraph_log//:log",
+        "@com_github_sourcegraph_scip//bindings/go/scip",
         "@io_opentelemetry_go_otel//attribute",
+        "@org_golang_google_protobuf//proto",
         "@org_golang_x_sync//errgroup",
     ],
 )
@@ -57,15 +59,21 @@ go_test(
         "store_dependency_index_test.go",
         "store_dumps_test.go",
         "store_export_test.go",
-        # TODO JH: I don't know what this isn't getting picked up by Gazelle
-        "store_index_test.go",  # keep
+        "store_index_test.go",
         "store_packages_test.go",
+        "store_ranking_test.go",
         "store_reconcile_test.go",
         "store_references_test.go",
         "store_repositories_test.go",
         "store_uploads_test.go",
     ],
     embed = [":store"],
+    tags = [
+        # Test requires locally running DB so don't test on //...
+        "manual",
+        # Test requires localhost
+        "requires-network",
+    ],
     deps = [
         "//cmd/frontend/globals",
         "//enterprise/internal/codeintel/shared/types",

@@ -199,6 +199,12 @@ go_test(
         "zoekt_repos_test.go",
     ],
     embed = [":database"],
+    tags = [
+        # Test requires locally running redis & postgres so don't test on //...
+        "manual",
+        # Test requires localhost
+        "requires-network",
+    ],
     deps = [
         "//cmd/frontend/envvar",
         "//cmd/frontend/globals",
@@ -244,6 +250,7 @@ go_test(
         "@com_github_stretchr_testify//assert",
         "@com_github_stretchr_testify//require",
         "@com_github_tidwall_gjson//:gjson",
+        "@io_k8s_utils//pointer",
         "@org_golang_x_sync//errgroup",
     ],
 )

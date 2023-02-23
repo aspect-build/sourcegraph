@@ -14,7 +14,6 @@ go_library(
     deps = [
         "//cmd/frontend/envvar",
         "//cmd/frontend/globals",
-        "//enterprise/internal/authz/syncjobs",
         "//enterprise/internal/database",
         "//enterprise/internal/licensing",
         "//internal/api",
@@ -42,6 +41,7 @@ go_library(
         "@com_github_prometheus_client_golang//prometheus/promauto",
         "@com_github_sourcegraph_log//:log",
         "@io_opentelemetry_go_otel//attribute",
+        "@org_golang_x_exp//maps",
     ],
 )
 
@@ -56,6 +56,12 @@ go_test(
     ],
     data = glob(["testdata/**"]),
     embed = [":authz"],
+    tags = [
+        # Test requires locally running DB so don't test on //...
+        "manual",
+        # Test requires localhost
+        "requires-network",
+    ],
     deps = [
         "//enterprise/internal/authz/github",
         "//enterprise/internal/database",

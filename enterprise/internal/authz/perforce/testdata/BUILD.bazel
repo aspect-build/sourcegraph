@@ -1,0 +1,8 @@
+filegroup(
+    name = "testdata",
+    srcs = glob(["*.txt"]),
+    visibility = [
+        "//enterprise/internal/authz/perforce:__pkg__",
+        "//enterprise/internal/authz/perforce/cmd/scanprotects:__pkg__",
+    ],
+)
