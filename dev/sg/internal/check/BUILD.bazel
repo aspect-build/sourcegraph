@@ -5,7 +5,6 @@ go_library(
     srcs = [
         "annotation.go",
         "category.go",
-        "check.go",
         "functions.go",
         "helpers.go",
         "input.go",
