@@ -13,7 +13,7 @@ func TestCheckVersion(t *testing.T) {
 		constraint  string
 		wantErr     string
 	}{
-		{"git", "1.2.3", ">= 1.2.0", ""},
+		{"git", "1.2.3", ">= 1.3.0", ""},
 		{"git", "1.2.3", ">= 2.99.0", `version "1.2.3" from "git" does not match constraint ">= 2.99.0"`},
 		{"git", "1.2.3", ">>= 2.0 <==", `improper constraint: >>= 2.0 <==`},
 	}
