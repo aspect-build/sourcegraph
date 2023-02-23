@@ -108,6 +108,7 @@ The `doc` directory has additional documentation for developing and understandin
 - [Documentation style guide](https://handbook.sourcegraph.com/engineering/product_documentation)
 - [GraphQL API](./doc/api/graphql/index.md): useful tips when modifying the GraphQL API
 - [Contributing](./CONTRIBUTING.md)
+- [Bazel](https://bazel.build/)
 
 ## License
 
