@@ -1,5 +1,3 @@
-"Bazel rules"
-
 load("@bazel_skylib//lib:partial.bzl", "partial")
 load("@bazel_skylib//rules:expand_template.bzl", "expand_template")
 load("@aspect_rules_jest//jest:defs.bzl", _jest_test = "jest_test")
@@ -17,15 +15,6 @@ USE_RAW_BABEL = True
 sass = _sass
 
 def ts_project(name, deps = [], **kwargs):
-    """A wrapper around ts_project
-
-    Args:
-        name: A unique name for this target
-
-        deps: A list of dependencies
-
-        **kwargs: Additional arguments to pass to ts_project
-    """
     deps = deps + [
         "//:node_modules/tslib",
     ]
@@ -94,15 +83,6 @@ def _ts_project_tsc_impl(name, visibility, **kwargs):
     )
 
 def npm_package(name, srcs = [], **kwargs):
-    """A wrapper around npm_package
-
-    Args:
-        name: A unique name for this target
-
-        srcs: A list of sources
-
-        **kwargs: Additional arguments to pass to npm_package
-    """
     replace_prefixes = kwargs.pop("replace_prefixes", {})
 
     # Modifications to package.json

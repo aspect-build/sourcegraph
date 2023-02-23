@@ -1,5 +1,3 @@
-"GraphQL generation rule"
-
 load("@aspect_rules_js//js:defs.bzl", "js_run_binary")
 
 def generate_graphql_operations(name, interface_name, srcs, out, **kwargs):
