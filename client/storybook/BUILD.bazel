@@ -1,7 +1,6 @@
 load("//client/shared/dev:tools.bzl", "module_style_typings")
 load("//dev:defs.bzl", "npm_package", "sass", "ts_project")
 load("@npm//:defs.bzl", "npm_link_all_packages")
-load("//client/shared/dev:tools.bzl", "module_style_typings")
 
 # TODO(bazel): remove when no longer generated into src
 # gazelle:exclude **/*.module.scss.d.ts
